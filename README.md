@@ -15,7 +15,7 @@ The application uses Express.js for routing, a MongoDB database, the Mongoose OD
 6. To run the application, open the project in Visual Studio Code and open the "Integrated Terminal".  At the integrated command line inside Visual Studio
 Code, type in the "npm start" command to execute the NoSQL Social Network API.
 
-## Instuctional Video:
+## Instuctional Videos:
 
 For a demonstration on how to run this application, please watch these videos:
 https://drive.google.com/file/d/1wC3bRvanIyPcsDP47reOp59JbhFajuBj/view
