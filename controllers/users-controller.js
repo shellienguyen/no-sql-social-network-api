@@ -41,6 +41,34 @@ const usersControllers = {
          console.log( err );
          res.status( 400 ).json( err );
       });
+   },
+
+   // Route to update a user data
+   updateUser({ params, body }, res ) {
+      Users.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+      .then( dbUsersData => {
+         if ( !dbUsersData ) {
+            res.status( 404 ).json( { message: 'No user found with this ID!' });
+            return;
+         };
+
+         res.json( dbUsersData );
+      })
+      .catch( err => res.json( err ));
+   },
+
+   // Route to delete a user
+   deleteUser({ params }, res ) {
+      Users.findOneAndDelete({ _id: params.id })
+      .then( dbUsersData => {
+         if ( !dbUsersData ) {
+            res.status( 404 ).json( { message: 'No user found with this ID!' });
+            return;
+         };
+
+         res.json( dbUsersData );
+      })
+      .catch( err => res.status( 400 ).json( err ));
    }
 };
 
