@@ -1,5 +1,4 @@
 const { Users, Thoughts } = require( '../models' );
-const { db } = require('../models/Users');
 
 
 const thoughtsController = {
@@ -88,7 +87,7 @@ const thoughtsController = {
    addReaction({ params, body }, res ) {
       Thoughts.findOneAndUpdate({ _id: params.thoughtId },
                                 { $push: { reactions: body }},
-                                { new: true, runValidators: true})
+                                { new: true, runValidators: true })
       .populate({ path: 'reactions', select: '-__v' })
       .select( '-__v' )
       .then( dbReactionData => {
@@ -105,7 +104,7 @@ const thoughtsController = {
    // Route to delete a reaction
    deleteReaction({ params }, res ) {
       Thoughts.findOneAndUpdate({ _id: params.thoughtId },
-                                { $pull: { reactions: {reactionId: params.reactionId }}},
+                                { $pull: { reactions: { reactionId: params.reactionId }}},
                                 { new: true })
       .then( dbReactionData => {
          if ( !dbReactionData ) {
