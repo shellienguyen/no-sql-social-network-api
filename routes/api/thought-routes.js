@@ -13,6 +13,9 @@ const {
 // Route to /api/thoughts
 router.route( '/' ).get( getAllThoughts );
 
+// Remember that the callback function of a route method has req and res
+// as parameters, so we don't have to explicitly pass any arguments to the functions.
+
 // Route to /api/thoughts/:id
 router.route( '/:id' ).get( getThoughtsById ).put( updateThought ).delete( deleteThought );
 

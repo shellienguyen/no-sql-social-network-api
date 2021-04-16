@@ -10,6 +10,13 @@ const usersControllers = {
    },
 
    // Route to retrieve all users
+   /*
+   Note that we also used the select option inside of populate(),
+   so that we can tell Mongoose that we don't care about the __v
+   field. The minus sign - in front of the field
+   indicates that we don't want it to be returned. If we didn't have
+   it, it would mean that it would return only the __v field.
+   */
    getAllUsers( req, res ) {
       Users.find({})
       .populate({ path: 'thoughts', select: '-__v' })
@@ -44,6 +51,13 @@ const usersControllers = {
    },
 
    // Route to update a user data
+   /*
+   With this .findOneAndUpdate() method, Mongoose finds a single document
+   we want to update, then updates it and returns the updated document.
+   If we don't set that third parameter, { new: true }, it will return the
+   original document. By setting the parameter to true, we're instructing
+   Mongoose to return the new version of the document.
+   */
    updateUser({ params, body }, res ) {
       Users.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .then( dbUsersData => {

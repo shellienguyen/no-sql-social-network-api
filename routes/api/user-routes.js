@@ -10,6 +10,9 @@ const {
    deleteFriend
 } = require( '../../controllers/users-controller' );
 
+// Remember that the callback function of a route method has req and res
+// as parameters, so we don't have to explicitly pass any arguments to the functions.
+
 // Route to /api/users
 router.route( '/' ).get( getAllUsers ).post( createUser );
 

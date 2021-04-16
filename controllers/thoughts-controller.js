@@ -22,6 +22,13 @@ const thoughtsController = {
    },
 
    // Route to retrieve all thoughts
+   /*
+   Note that we also used the select option inside of populate(),
+   so that we can tell Mongoose that we don't care about the __v
+   field on thoughts either. The minus sign - in front of the field
+   indicates that we don't want it to be returned. If we didn't have
+   it, it would mean that it would return only the __v field.
+   */
    getAllThoughts( req, res ) {
       Thoughts.find({})
       .populate({ path: 'reactions', select: '-__v' })
@@ -54,6 +61,13 @@ const thoughtsController = {
    },
 
    // Route to update a thought
+   /*
+   With this .findOneAndUpdate() method, Mongoose finds a single document
+   we want to update, then updates it and returns the updated document.
+   If we don't set that third parameter, { new: true }, it will return the
+   original document. By setting the parameter to true, we're instructing
+   Mongoose to return the new version of the document.
+   */
    updateThought({ params, body }, res ) {
       Thoughts.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .populate({ path: 'reactions', select: '-__v' })
