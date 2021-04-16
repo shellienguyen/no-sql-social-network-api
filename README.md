@@ -25,6 +25,10 @@ https://drive.google.com/file/d/1zLcAlF7q4hQx6E9DCXZBtrB3DaDScILY/view
 
 ## The Following Animated GIFs Show How This Application Works:
 
+#### Data Validation:<br>
+![Mockup](https://github.com/shellienguyen/no-sql-social-network-api/blob/main/public/src/images/00-data-validation.gif)
+<br><br>
+
 #### POST to add a new user:<br>
 ![Mockup](https://github.com/shellienguyen/no-sql-social-network-api/blob/main/public/src/images/01-POST-new-user.gif)
 <br><br>
