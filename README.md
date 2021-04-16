@@ -17,7 +17,10 @@ Code, type in the "npm start" command to execute the NoSQL Social Network API.
 
 ## Instuctional Video:
 
-For a demonstration on how to run this application, please watch this video: 
+For a demonstration on how to run this application, please watch these videos:
+https://drive.google.com/file/d/1wC3bRvanIyPcsDP47reOp59JbhFajuBj/view
+<br>
+
 
 ## The Following Animated GIFs Show How This Application Works:
 
