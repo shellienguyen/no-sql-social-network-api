@@ -69,6 +69,42 @@ const usersControllers = {
          res.json( dbUsersData );
       })
       .catch( err => res.status( 400 ).json( err ));
+   },
+
+   // Route to add a friend
+   addFriend({ params }, res ) {
+      Users.findOneAndUpdate({ _id: params.id },
+                             { $push: { friends: params.friendId }},
+                             { new: true })
+      .populate({ path: 'friends', select: ( '-__v' )})
+      .select( '-__v' )
+      .then( dbFriendData => {
+         if ( !dbFriendData ) {
+            res.status( 400 ).json({ message: 'No user found with this ID!' });
+            return;
+         };
+
+         res.json( dbFriendData );
+      })
+      .catch( err => res.json( err ));
+   },
+
+   // Route to delete a friend
+   deleteFriend({ params }, res ){
+      Users.findOneAndUpdate({ _id: params.id },
+                             { $pull: { friends: params.friendId }},
+                             { new: true })
+      .populate({ path: 'friends', select: '-__v' })
+      .select( '-__v' )
+      .then( dbFriendData => {
+         if ( !dbFriendData ) {
+            res.status( 404 ).json({ message: 'No user found with this ID!' });
+            return;
+         };
+
+         res.json( dbFriendData );
+      })
+      .catch( err => res.statu( 400 ).json( err ));
    }
 };
 
